@@ -3,3 +3,11 @@
 	<p><%= idea.body %></p>
 	<p><%= idea.quality %></p>
 <% end %>
+
+<%= form_for :idea, method: :post do |f| %>
+	<p><%= f.label :title %>
+	<%= f.text_field :title %></p>
+	<p><%= f.label :body %>
+	<%= f.text_field :body %></p>
+	<%= f.submit "Submit", class: "btn btn-default" %>
+<% end %>
