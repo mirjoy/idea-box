@@ -1,7 +1,10 @@
-<% @ideas.each do |idea| %>
-	<p><%= idea.title %></p>
+
+<% @ideas.each_with_index do |idea, index| %>
+<div class="col-sm-4">
+	<p><%= index + 1 %>. <%= idea.title %></p>
 	<p><%= idea.body %></p>
 	<p><%= idea.quality %></p>
+</div>
 <% end %>
 
 <%= form_for :idea, method: :post do |f| %>

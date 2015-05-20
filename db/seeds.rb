@@ -1,7 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+class Seeds
+	def self.create
+		Idea.create(title: "get a kitten", body: "pet the kitten")	
+		Idea.create(title: "get a puppy", body: "pet the puppy")
+		Idea.create(title: "get a duckling", body: "pet the duckling")
+		puts "ideas created"
+	end
+end
+
+Seeds.create
