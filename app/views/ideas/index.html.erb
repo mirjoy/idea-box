@@ -1,16 +1,24 @@
-
-<% @ideas.each_with_index do |idea, index| %>
-<div class="col-sm-4">
-	<p><%= index + 1 %>. <%= idea.title %></p>
-	<p><%= idea.body %></p>
-	<p><%= idea.quality %></p>
+<div class="row" id="new-idea">
+	<div class="col-sm-12">
+		<h1>Create a new idea</h1>
+			<%= form_for(:idea, url: ideas_path, method: :post, remote: true) do |f| %>
+				<p><%= f.label :title %>:
+				<%= f.text_field :title %></p>
+				<p><%= f.label :body %>:
+				<%= f.text_field :body %></p>
+				<%= f.submit "Submit", class: "btn btn-default" %>
+			<% end %>
+	</div>
 </div>
-<% end %>
 
-<%= form_for :idea, method: :post do |f| %>
-	<p><%= f.label :title %>
-	<%= f.text_field :title %></p>
-	<p><%= f.label :body %>
-	<%= f.text_field :body %></p>
-	<%= f.submit "Submit", class: "btn btn-default" %>
-<% end %>
+<div class="row">
+	<% @ideas.each_with_index do |idea, index| %>
+	<div class="col-sm-4">
+		<p><%= index + 1 %>. <%= idea.title %></p>
+		<p><%= idea.body %></p>
+		<p><%= idea.quality %></p>
+		<p class="btn btn-default">Edit Idea</p>
+		<p class="btn btn-danger">Delete Idea</p>
+	</div>
+	<% end %>
+</div>
