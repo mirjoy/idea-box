@@ -1,24 +1,26 @@
 <div class="row" id="new-idea">
 	<div class="col-sm-12">
 		<h1>Create a new idea</h1>
-			<%= form_for(:idea, url: ideas_path, method: :post, remote: true) do |f| %>
+			<%= form_for(:idea, url: api_v1_ideas_path, method: :post, remote: true) do |f| %>
 				<p><%= f.label :title %>:
 				<%= f.text_field :title %></p>
 				<p><%= f.label :body %>:
 				<%= f.text_field :body %></p>
-				<%= f.submit "Submit", class: "btn btn-default" %>
+				<%= f.submit "Submit", class: "btn btn-default", id: "submit-btn" %>
 			<% end %>
 	</div>
 </div>
 
-<div class="row">
+<div class="row" id="idea-list">
 	<% @ideas.each_with_index do |idea, index| %>
 	<div class="col-sm-4">
-		<p><%= index + 1 %>. <%= idea.title %></p>
+		<p class="idea-num"><%= index + 1 %>. <%= idea.title %></p>
 		<p><%= idea.body %></p>
 		<p><%= idea.quality %></p>
-		<p class="btn btn-default">Edit Idea</p>
-		<p class="btn btn-danger">Delete Idea</p>
+		<div class="btn-group" data-id="<%= idea.id %>">
+			<p class="btn btn-default edit-btn">Edit Idea</p>
+			<p class="btn btn-danger delete-btn">Delete Idea</p>
+		</div>
 	</div>
 	<% end %>
 </div>

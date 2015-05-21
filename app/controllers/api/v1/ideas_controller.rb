@@ -6,20 +6,20 @@ class Api::V1::IdeasController < ApplicationController
 	end
 
 	def create
-		respond_with :api, :v1, Idea.create(item_params)
+		respond_with :api, :v1, Idea.create(title: params[:title], body: params[:body])
 	end
 
 	def update
-		respond_with Item.update(params[:id], item_params)
+		respond_with Idea.update(params[:id], item_params)
 	end
 
 	def destroy
-		respond_with Item.destroy(params[:id])
+		respond_with Idea.destroy(params[:id])
 	end
 
 	private
 
 	def item_params
-		params.require(:item).permit(:title, :body)
+		params.require(:idea).permit(:title, :body)
 	end
 end

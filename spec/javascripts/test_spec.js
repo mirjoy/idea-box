@@ -16,6 +16,14 @@ var IdeaRepository = {
 };
 
 describe('isEven()', function () {
+	beforeEach(function(){
+		MagicLamp.load("ideas/index");
+	});
+
+	afterEach(function(){
+		MagicLamp.clean();
+	})
+
   it('Zero is an even number. Strange, right?', function () {
     expect(isEven(0));
   });
